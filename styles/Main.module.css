@@ -15,4 +15,15 @@
   padding: 20px;
   height: 100vh;
 }
+
+.resultsCon {
+  margin-top: 20px;
+}
+
+.results {
+  font-size: 20px;
+  font-weight: 700;
+  word-wrap: normal;
+  margin-top: 16px;
+}
 /*# sourceMappingURL=Main.module.css.map */

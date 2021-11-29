@@ -3,6 +3,7 @@ import Head from "next/head";
 import styles from "../styles/Main.module.css";
 import { AlgorithmSelector } from "../views/AlgorithmSelector/AlgorithmSelector";
 import { Processes } from "../views/Processes/Processes";
+import { Results } from "../views/Results/Results";
 import { Visualizer } from "../views/Visualizer/Visualizer";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
 
         <div className={styles.rightCon}>
           <Visualizer />
+          <Results />
         </div>
       </div>
     </div>
