@@ -27,10 +27,12 @@ export const AlgorithmSelector = () => {
 
     for (let x = 0; x < Math.floor(noProcesses); x++) {
       processList.push({
+        id: "P" + (x + 1),
         processTime:
           Math.floor(Math.random() * (maxTime - minTime + 1)) + minTime,
         processLength:
           Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen,
+        priority: Math.floor(Math.random() * noProcesses) + 1,
       });
     }
     setProcesses(processList);
