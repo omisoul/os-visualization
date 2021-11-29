@@ -17,6 +17,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
+
       <div className={styles.container}>
         <div className={styles.leftCon}>
           <AlgorithmSelector />
