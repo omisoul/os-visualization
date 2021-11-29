@@ -1,0 +1,18 @@
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 500px auto;
+      grid-template-columns: 500px auto;
+}
+
+.leftCon {
+  border-right: 3px solid #dcdcdc;
+  padding: 20px;
+  height: 100vh;
+}
+
+.rightCon {
+  padding: 20px;
+  height: 100vh;
+}
+/*# sourceMappingURL=Main.module.css.map */

@@ -1,0 +1,73 @@
+.selectCon {
+  margin-top: 20px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.selectCon label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.selectCon span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.selectCon select {
+  border: none;
+  height: 48px;
+  background-color: #f0f0f0;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.selectCon .btn {
+  width: 100%;
+  margin: 20px 0;
+  padding: 12px 24px;
+  background-color: #26a9e0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.selectCon .btn:hover {
+  background-color: #1a90c2;
+}
+
+.inputCons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 12px;
+}
+
+.inputCons span {
+  width: 220px;
+}
+
+.inputCons input {
+  border: none;
+  height: 48px;
+  background-color: #f0f0f0;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+/*# sourceMappingURL=AlgoSelector.module.css.map */

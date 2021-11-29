@@ -1,0 +1,13 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+/*# sourceMappingURL=global.css.map */

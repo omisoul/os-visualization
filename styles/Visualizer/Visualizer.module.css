@@ -1,0 +1,62 @@
+.visualCon {
+  border-bottom: 1px solid #dcdcdc;
+  height: 70vh;
+}
+
+.header_span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header_span .btn {
+  padding: 12px 24px;
+  background-color: #26a9e0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.header_span .btn:hover {
+  background-color: #1a90c2;
+}
+
+.text_span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 20px;
+}
+
+.text_span p span {
+  font-weight: 600;
+}
+
+.outerProcessCon {
+  overflow: hidden;
+  height: calc(70vh - 120px);
+}
+
+.processCon {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 20px;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+/*# sourceMappingURL=Visualizer.module.css.map */
