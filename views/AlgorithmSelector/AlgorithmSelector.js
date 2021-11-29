@@ -66,7 +66,7 @@ export const AlgorithmSelector = () => {
               id="no_processes"
               name="no_processes"
               className="options"
-              onChange={(e) => setNoProcesses(e.target.value)}
+              onChange={(e) => setNoProcesses(parseInt(e.target.value))}
             ></input>
           </span>
           <span className="input_span">
@@ -77,7 +77,7 @@ export const AlgorithmSelector = () => {
               id="quantum"
               name="quantum"
               className="options"
-              onChange={(e) => setQuantum(e.target.value)}
+              onChange={(e) => setQuantum(parseInt(e.target.value))}
             ></input>
           </span>
         </div>
@@ -91,7 +91,7 @@ export const AlgorithmSelector = () => {
               id="min_length"
               name="min_length"
               className="options"
-              onChange={(e) => setMinLen(e.target.value)}
+              onChange={(e) => setMinLen(parseInt(e.target.value))}
             ></input>
           </span>
           <span className="input_span">
@@ -102,7 +102,7 @@ export const AlgorithmSelector = () => {
               id="max_length"
               name="max_length"
               className="options"
-              onChange={(e) => setMaxLen(e.target.value)}
+              onChange={(e) => setMaxLen(parseInt(e.target.value))}
             ></input>
           </span>
         </div>
@@ -116,7 +116,7 @@ export const AlgorithmSelector = () => {
               id="min_time"
               name="min_time"
               className="options"
-              onChange={(e) => setMinTime(e.target.value)}
+              onChange={(e) => setMinTime(parseInt(e.target.value))}
             ></input>
           </span>
           <span className="input_span">
@@ -127,7 +127,7 @@ export const AlgorithmSelector = () => {
               id="max_time"
               name="max_time"
               className="options"
-              onChange={(e) => setMaxTime(e.target.value)}
+              onChange={(e) => setMaxTime(parseInt(e.target.value))}
             ></input>
           </span>
         </div>
