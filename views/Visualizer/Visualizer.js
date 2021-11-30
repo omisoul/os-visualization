@@ -8,6 +8,8 @@ export const Visualizer = ({ processes, algorithm }) => {
   const [testList, setTestList] = useState([]);
   const [timeTaken, setTimeTaken] = useState(0);
 
+  if (algorithm == "fcfs") {
+  }
   let totalTime = 0;
 
   for (let i = 0; i < newList.length; i++) {
