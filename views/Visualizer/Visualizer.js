@@ -6,17 +6,30 @@ import styles from "../../styles/Visualizer/Visualizer.module.css";
 export const Visualizer = ({ processes, algorithm, quantum }) => {
   const [newList, setNewList] = useState(processes);
   const [testList, setTestList] = useState([]);
-  // const [tProcess, setTProcess] = useState({})
+  const [timeTaken, setTimeTaken] = useState(0);
 
+  if (algorithm == "fcfs") {
+  }
+  let totalTime = 0;
+
+  for (let i = 0; i < newList.length; i++) {
+    totalTime += newList[i].processTime;
+  }
   let items = 0;
-
-  const [prev, setPrev] = useState([]);
-
+  let newTime = 0;
   let timer = 0;
+  let sTimer = 0;
 
-  let scheduleUpdate = () => {
+  let scheduleUpdate = async () => {
     if (newList.length > 0) {
       timer = setTimeout(update, newList[items].processTime * 1000);
+    }
+  };
+
+  let timeUpdate = () => {
+    if (timeTaken < totalTime) {
+      console.log(totalTime);
+      sTimer = setTimeout(updateTime, 1000);
     }
   };
 
@@ -29,6 +42,13 @@ export const Visualizer = ({ processes, algorithm, quantum }) => {
     }
   };
 
+  let updateTime = () => {
+    newTime = newTime + 1;
+    setTimeTaken(newTime);
+    if (newTime < totalTime) {
+      timeUpdate();
+    }
+  };
   useEffect(() => {
     scheduleUpdate();
 
@@ -37,8 +57,17 @@ export const Visualizer = ({ processes, algorithm, quantum }) => {
     };
   }, [newList]);
 
+  useEffect(() => {
+    timeUpdate();
+
+    return () => {
+      clearTimeout(sTimer);
+    };
+  }, [newList]);
+
   function createProcesses() {
     setTestList([]);
+    setTimeTaken(0);
     if (algorithm == "fcfs") {
       setNewList([...processes]);
     } else if (algorithm == "spn") {
@@ -108,7 +137,7 @@ export const Visualizer = ({ processes, algorithm, quantum }) => {
           Currently showing: <span>First Come First Serve</span>
         </p>
         <p>
-          Time taken: <span>13secs</span>
+          Time taken: <span>{timeTaken}</span>
         </p>
       </span>
 
