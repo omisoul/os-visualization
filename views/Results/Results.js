@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../../styles/Main.module.css";
 
-export const Results = () => {
+export const Results = ({ results }) => {
+  console.log(results);
   return (
     <div className={styles.resultsCon}>
       <p>Process Order based on the algorithm choosen:</p>

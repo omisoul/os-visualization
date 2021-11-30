@@ -3,13 +3,25 @@ import { Process } from "../../components/Process";
 
 import styles from "../../styles/Visualizer/Visualizer.module.css";
 
-export const Visualizer = ({ processes, algorithm }) => {
+export const Visualizer = ({ processes, algorithm, setResults }) => {
   const [newList, setNewList] = useState(processes);
   const [testList, setTestList] = useState([]);
   const [timeTaken, setTimeTaken] = useState(0);
 
-  if (algorithm == "fcfs") {
-  }
+  const [algoType, setAlgoType] = useState("");
+
+  useEffect(() => {
+    if (algorithm == "fcfs") {
+      setAlgoType("First Come First Serve");
+    } else if (algorithm == "spn") {
+      setAlgoType("Shortest Job Next");
+    } else if (algorithm == "rr") {
+      setAlgoType("Round Robin");
+    } else {
+      setAlgoType("Priority Scheduling");
+    }
+  }, [algorithm]);
+
   let totalTime = 0;
 
   for (let i = 0; i < newList.length; i++) {
@@ -60,6 +72,8 @@ export const Visualizer = ({ processes, algorithm }) => {
 
   useEffect(() => {
     timeUpdate();
+    let values = newList.map((process) => console.log(process));
+    setResults();
 
     return () => {
       clearTimeout(sTimer);
@@ -97,7 +111,7 @@ export const Visualizer = ({ processes, algorithm }) => {
 
       <span className={styles.text_span}>
         <p>
-          Currently showing: <span>First Come First Serve</span>
+          Currently showing: <span>{algoType}</span>
         </p>
         <p>
           Time taken: <span>{timeTaken}</span>
