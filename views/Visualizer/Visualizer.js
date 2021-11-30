@@ -71,8 +71,8 @@ export const Visualizer = ({ processes, algorithm, quantum, setResults }) => {
 
   useEffect(() => {
     timeUpdate();
-    let values = newList.map((process) => console.log(process));
-    setResults();
+    let values = newList.map((process) => process.name);
+    setResults([...values]);
 
     return () => {
       clearTimeout(sTimer);
