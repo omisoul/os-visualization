@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Algoselector/AlgoSelector.module.css";
 export const AlgorithmSelector = () => {
+  const sleep = (milliseconds) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
   const [algorithm, setAlgorithm] = useState("fcfs");
 
   const [quantum, setQuantum] = useState(0);
@@ -10,12 +14,13 @@ export const AlgorithmSelector = () => {
   const [minTime, setMinTime] = useState(1);
   const [maxTime, setMaxTime] = useState(1);
   const [processes, setProcesses] = useState([]);
+  const [sjfProcesses, setSJFProcesses] = useState([]);
 
   useEffect(() => {
     console.log(processes);
   }, [processes]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     let processList = [];
@@ -35,7 +40,30 @@ export const AlgorithmSelector = () => {
         priority: Math.floor(Math.random() * noProcesses) + 1,
       });
     }
-    setProcesses(processList);
+    setProcesses([...processList]);
+
+    //fcfs
+    for (let i = 0; i < processes.length; i++) {
+      let timeTaken = processes[i]["processTime"] * 1000;
+
+      await sleep(timeTaken);
+      console.log(processes[i]["id"]);
+    }
+
+    //sjf
+    setSJFProcesses([
+      ...processes.sort((a, b) =>
+        a["processTime"] > b["processTime"] ? 1 : -1
+      ),
+    ]);
+
+    console.log(sjfProcesses);
+    for (let i = 0; i < sjfProcesses.length; i++) {
+      let timeTaken = sjfProcesses[i]["processTime"] * 1000;
+
+      await sleep(timeTaken);
+      console.log(sjfProcesses[i]["id"]);
+    }
   }
 
   return (
