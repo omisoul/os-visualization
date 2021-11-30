@@ -10,7 +10,7 @@ import { Visualizer } from "../views/Visualizer/Visualizer";
 export default function Home() {
   const [processes, setProcesses] = useState([]);
   const [algorithm, setAlgorithm] = useState("fcfs");
-  const [quantum, setQuantum] = useState(0);
+  const [quantum, setQuantum] = useState(1);
 
   return (
     <div>

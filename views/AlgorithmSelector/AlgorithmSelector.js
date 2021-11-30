@@ -18,6 +18,26 @@ export const AlgorithmSelector = ({
   const [minTime, setMinTime] = useState(1);
   const [maxTime, setMaxTime] = useState(1);
 
+  function isDisabled() {
+    if (
+      noProcesses == NaN ||
+      minTime == NaN ||
+      maxTime == NaN ||
+      quantum == NaN
+    ) {
+      return true;
+    } else {
+      if (noProcesses < 1 || minTime < 1 || maxTime < 1 || quantum < 1) {
+        return true;
+      } else {
+        if (maxTime < minTime || maxLen < minLen) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -66,7 +86,7 @@ export const AlgorithmSelector = ({
             }}
           >
             <option value="fcfs">First Come First Serve</option>
-            <option value="spn">Shortest Job First</option>
+            <option value="spn">Shortest Process Next</option>
             <option value="ps">Priority Scheduling</option>
             <option value="rr">Round Robin</option>
           </select>
@@ -77,6 +97,7 @@ export const AlgorithmSelector = ({
             <label htmlFor="no_processes">Number of Processes</label>
             <input
               type="number"
+              min="1"
               value={noProcesses}
               id="no_processes"
               name="no_processes"
@@ -88,6 +109,7 @@ export const AlgorithmSelector = ({
             <label htmlFor="quantum">Quantum</label>
             <input
               type="number"
+              min="1"
               value={quantum}
               id="quantum"
               name="quantum"
@@ -127,22 +149,40 @@ export const AlgorithmSelector = ({
             <label htmlFor="min_time">Min Time</label>
             <input
               type="number"
+              min="1"
               value={minTime}
               id="min_time"
               name="min_time"
               className="options"
-              onChange={(e) => setMinTime(parseInt(e.target.value))}
+              onChange={(e) => {
+                if (e.target.value > maxTime) {
+                  setMaxTime(parseInt(e.target.value) + 1);
+                } else if (Number.isNaN(e.target.value)) {
+                  setMinTime(1);
+                } else {
+                  setMinTime(parseInt(e.target.value));
+                }
+              }}
             ></input>
           </span>
           <span className="input_span">
             <label htmlFor="max_time">Max Time</label>
             <input
               type="number"
+              min="1"
               value={maxTime}
               id="max_time"
               name="max_time"
               className="options"
-              onChange={(e) => setMaxTime(parseInt(e.target.value))}
+              onChange={(e) => {
+                if (e.target.value < minTime) {
+                  setMinTime(1);
+                }
+                if (Number.isNaN(e.target.value)) {
+                  setMaxTime(2);
+                }
+                setMaxTime(parseInt(e.target.value));
+              }}
             ></input>
           </span>
         </div>
@@ -150,6 +190,7 @@ export const AlgorithmSelector = ({
         <input
           type="submit"
           value="Generate Processes"
+          // disabled={isDisabled ? "disabled" : ""}
           className={styles.btn}
         />
       </form>
