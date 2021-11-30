@@ -39,9 +39,9 @@ export const Process = ({ process }) => {
       <p>
         Arrival Time: <span>{process.processLength}</span>
       </p>
-      <p>
+      {/* <p>
         Service Time: <span>0</span>
-      </p>
+      </p> */}
 
       <div className={styles.progressBar}></div>
     </div>
