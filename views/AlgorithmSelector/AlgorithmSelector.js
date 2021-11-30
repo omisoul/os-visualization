@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Algoselector/AlgoSelector.module.css";
-export const AlgorithmSelector = () => {
+export const AlgorithmSelector = ({ processes, setProcesses }) => {
   const [algorithm, setAlgorithm] = useState("fcfs");
 
   const [quantum, setQuantum] = useState(0);
@@ -9,7 +9,7 @@ export const AlgorithmSelector = () => {
   const [maxLen, setMaxLen] = useState(1);
   const [minTime, setMinTime] = useState(1);
   const [maxTime, setMaxTime] = useState(1);
-  const [processes, setProcesses] = useState([]);
+  //   const [processes, setProcesses] = useState([]);
 
   useEffect(() => {
     console.log(processes);

@@ -1,3 +1,13 @@
 .processesCon {
   margin-top: 20px;
 }
+
+.outerCon {
+  height: 28vh;
+  overflow: hidden;
+}
+
+.innerCon {
+  overflow: auto;
+  height: 100%;
+}

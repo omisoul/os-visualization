@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 
 import styles from "../styles/Main.module.css";
 import { AlgorithmSelector } from "../views/AlgorithmSelector/AlgorithmSelector";
@@ -7,6 +8,8 @@ import { Results } from "../views/Results/Results";
 import { Visualizer } from "../views/Visualizer/Visualizer";
 
 export default function Home() {
+  const [processes, setProcesses] = useState([]);
+
   return (
     <div>
       <Head>
@@ -20,12 +23,15 @@ export default function Home() {
 
       <div className={styles.container}>
         <div className={styles.leftCon}>
-          <AlgorithmSelector />
-          <Processes />
+          <AlgorithmSelector
+            processes={processes}
+            setProcesses={setProcesses}
+          />
+          <Processes processes={processes} setProcesses={setProcesses} />
         </div>
 
         <div className={styles.rightCon}>
-          <Visualizer />
+          <Visualizer processes={processes} setProcesses={setProcesses} />
           <Results />
         </div>
       </div>
