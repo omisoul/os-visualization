@@ -6,36 +6,22 @@ import styles from "../../styles/Visualizer/Visualizer.module.css";
 export const Visualizer = ({ processes, algorithm }) => {
   const [newList, setNewList] = useState(processes);
 
-  const sleep = (milliseconds) => {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
-  };
-
-  async function test() {
-    for (let i = 0; i < processes.length; i++) {
-      let tt = processes[i].processTime * 1000;
-      console.log(processes[i].id);
-      setNewList([...newList, processes[i]]);
-      await sleep(tt);
-    }
-  }
-
   function createProcesses() {
-    test();
-    // if (algorithm == "fcfs") {
-    //   setNewList([...processes]);
-    // } else if (algorithm == "spn") {
-    //   setNewList([
-    //     ...processes.sort((a, b) =>
-    //       a["processTime"] < b["processTime"] ? -1 : 1
-    //     ),
-    //   ]);
-    // } else if (algorithm == "ps") {
-    //   setNewList([
-    //     ...processes.sort((a, b) => (a["priority"] < b["priority"] ? 1 : -1)),
-    //   ]);
-    // } else if (algorithm == "rr") {
-    //   setNewList([...processes]);
-    // }
+    if (algorithm == "fcfs") {
+      setNewList([...processes]);
+    } else if (algorithm == "spn") {
+      setNewList([
+        ...processes.sort((a, b) =>
+          a["processTime"] < b["processTime"] ? -1 : 1
+        ),
+      ]);
+    } else if (algorithm == "ps") {
+      setNewList([
+        ...processes.sort((a, b) => (a["priority"] < b["priority"] ? 1 : -1)),
+      ]);
+    } else if (algorithm == "rr") {
+      setNewList([...processes]);
+    }
   }
 
   return (
