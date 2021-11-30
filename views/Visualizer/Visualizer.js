@@ -3,7 +3,7 @@ import { Process } from "../../components/Process";
 
 import styles from "../../styles/Visualizer/Visualizer.module.css";
 
-export const Visualizer = () => {
+export const Visualizer = ({ processes, setProcesses }) => {
   return (
     <section className={styles.visualCon}>
       <span className={styles.header_span}>
@@ -22,22 +22,9 @@ export const Visualizer = () => {
 
       <div className={styles.outerProcessCon}>
         <div className={styles.processCon}>
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
-          <Process />
+          {processes.map((process) => (
+            <Process process={process} />
+          ))}
         </div>
       </div>
     </section>

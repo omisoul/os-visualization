@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Algoselector/AlgoSelector.module.css";
-export const AlgorithmSelector = () => {
+export const AlgorithmSelector = ({ processes, setProcesses }) => {
   const sleep = (milliseconds) => {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   };
@@ -13,8 +13,7 @@ export const AlgorithmSelector = () => {
   const [maxLen, setMaxLen] = useState(1);
   const [minTime, setMinTime] = useState(1);
   const [maxTime, setMaxTime] = useState(1);
-  const [processes, setProcesses] = useState([]);
-  const [sjfProcesses, setSJFProcesses] = useState([]);
+  //   const [processes, setProcesses] = useState([]);
 
   useEffect(() => {
     console.log(processes);

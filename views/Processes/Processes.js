@@ -1,32 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "../../styles/Processes/Processes.module.css";
-export const Processes = () => {
+export const Processes = ({ processes, setProcesses }) => {
+  //   useEffect(() => {
+  //     setProcesses(processes);
+  //   }, [processes]);
+
+  console.log(processes);
+  if (processes.length > 0) {
+    console.log("help 2");
+  }
   return (
     <section>
       <div className={styles.processesCon}>
         <h3>Processes</h3>
+        <div className={styles.outerCon}>
+          <div className={styles.innerCon}>
+            <table>
+              <tr>
+                <th>Process</th>
+                <th>Order</th>
+                <th>Length</th>
+                <th>Priority</th>
+              </tr>
 
-        <table>
-          <tr>
-            <th>Process</th>
-            <th>Order</th>
-            <th>Length</th>
-            <th>Priority</th>
-          </tr>
-          <tr>
-            <td>P1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>P2</td>
-            <td>0</td>
-            <td>0</td>
-            <td>12</td>
-          </tr>
-        </table>
+              <tbody>
+                {processes.length > 0 &&
+                  processes.map((process) => {
+                    return (
+                      <tr key={process.id}>
+                        <td>{process.id}</td>
+                        <td>{process.processTime}</td>
+                        <td>{process.processLength}</td>
+                        <td>{process.priority}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
   );
