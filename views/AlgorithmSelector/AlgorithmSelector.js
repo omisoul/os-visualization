@@ -5,12 +5,13 @@ export const AlgorithmSelector = ({
   setProcesses,
   algorithm,
   setAlgorithm,
+  quantum,
+  setQuantum,
 }) => {
   const sleep = (milliseconds) => {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   };
 
-  const [quantum, setQuantum] = useState(0);
   const [noProcesses, setNoProcesses] = useState(4);
   const [minLen, setMinLen] = useState(1);
   const [maxLen, setMaxLen] = useState(1);
@@ -29,7 +30,8 @@ export const AlgorithmSelector = ({
 
     for (let x = 0; x < Math.floor(noProcesses); x++) {
       processList.push({
-        id: "P" + x,
+        id: x,
+        name: "P" + x,
         arrivalTime: x,
         processTime:
           Math.floor(Math.random() * (maxTime - minTime + 1)) + minTime,
@@ -41,12 +43,12 @@ export const AlgorithmSelector = ({
     setProcesses([...processList]);
 
     //fcfs
-    for (let i = 0; i < processes.length; i++) {
-      let timeTaken = processes[i]["processTime"] * 1000;
+    // for (let i = 0; i < processes.length; i++) {
+    //   let timeTaken = processes[i]["processTime"] * 1000;
 
-      await sleep(timeTaken);
-      console.log(processes[i]["id"]);
-    }
+    //   await sleep(timeTaken);
+    //   console.log(processes[i]["id"]);
+    // }
   }
 
   return (

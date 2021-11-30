@@ -11,6 +11,7 @@ export default function Home() {
   const [processes, setProcesses] = useState([]);
   const [algorithm, setAlgorithm] = useState("fcfs");
   const [results, setResults] = useState([]);
+  const [quantum, setQuantum] = useState(0);
 
   return (
     <div>
@@ -30,6 +31,8 @@ export default function Home() {
             setProcesses={setProcesses}
             algorithm={algorithm}
             setAlgorithm={setAlgorithm}
+            quantum={quantum}
+            setQuantum={setQuantum}
           />
           <Processes processes={processes} setProcesses={setProcesses} />
         </div>
@@ -39,6 +42,7 @@ export default function Home() {
             processes={processes}
             algorithm={algorithm}
             setResults={setResults}
+            quantum={quantum}
           />
           <Results results={results} />
         </div>
