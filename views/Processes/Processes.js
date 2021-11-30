@@ -6,10 +6,6 @@ export const Processes = ({ processes, setProcesses }) => {
   //     setProcesses(processes);
   //   }, [processes]);
 
-  console.log(processes);
-  if (processes.length > 0) {
-    console.log("help 2");
-  }
   return (
     <section>
       <div className={styles.processesCon}>
@@ -17,12 +13,14 @@ export const Processes = ({ processes, setProcesses }) => {
         <div className={styles.outerCon}>
           <div className={styles.innerCon}>
             <table>
-              <tr>
-                <th>Process</th>
-                <th>Order</th>
-                <th>Length</th>
-                <th>Priority</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Process</th>
+                  <th>Order</th>
+                  <th>Time</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
 
               <tbody>
                 {processes.length > 0 &&
@@ -30,8 +28,8 @@ export const Processes = ({ processes, setProcesses }) => {
                     return (
                       <tr key={process.id}>
                         <td>{process.id}</td>
+                        <td>{process.arrivalTime}</td>
                         <td>{process.processTime}</td>
-                        <td>{process.processLength}</td>
                         <td>{process.priority}</td>
                       </tr>
                     );

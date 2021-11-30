@@ -17,10 +17,6 @@ export const AlgorithmSelector = ({
   const [minTime, setMinTime] = useState(1);
   const [maxTime, setMaxTime] = useState(1);
 
-  useEffect(() => {
-    console.log(processes);
-  }, [processes]);
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -99,7 +95,7 @@ export const AlgorithmSelector = ({
           </span>
         </div>
 
-        <div className={styles.inputCons}>
+        {/* <div className={styles.inputCons}>
           <span className="input_span">
             <label htmlFor="min_length">Min Length</label>
             <input
@@ -122,7 +118,7 @@ export const AlgorithmSelector = ({
               onChange={(e) => setMaxLen(parseInt(e.target.value))}
             ></input>
           </span>
-        </div>
+        </div> */}
 
         <div className={styles.inputCons}>
           <span className="input_span">
