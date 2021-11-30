@@ -34,7 +34,7 @@ export const Process = ({ process }) => {
         Time Taken: <span>{time}</span>
       </p> */}
       <p>
-        Time Taken: <span>{process.processTime}</span>
+        Time Taken: <span>{`${process.processTime}`}</span>
       </p>
       <p>
         Arrival Time: <span>{process.processLength}</span>
