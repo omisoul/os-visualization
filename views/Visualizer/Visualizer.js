@@ -113,7 +113,7 @@ export const Visualizer = ({ processes, algorithm, quantum, setResults }) => {
             });
             times[i] = times[i] - quantum;
             count += 1;
-          } else {
+          } else if (times[i] > 0) {
             pList.push({
               id: count,
               name: "P" + i,
