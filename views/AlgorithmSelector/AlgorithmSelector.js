@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Algoselector/AlgoSelector.module.css";
-export const AlgorithmSelector = ({ processes, setProcesses }) => {
+export const AlgorithmSelector = ({
+  processes,
+  setProcesses,
+  algorithm,
+  setAlgorithm,
+}) => {
   const sleep = (milliseconds) => {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   };
-
-  const [algorithm, setAlgorithm] = useState("fcfs");
 
   const [quantum, setQuantum] = useState(0);
   const [noProcesses, setNoProcesses] = useState(4);
@@ -13,7 +16,6 @@ export const AlgorithmSelector = ({ processes, setProcesses }) => {
   const [maxLen, setMaxLen] = useState(1);
   const [minTime, setMinTime] = useState(1);
   const [maxTime, setMaxTime] = useState(1);
-  //   const [processes, setProcesses] = useState([]);
 
   useEffect(() => {
     console.log(processes);
@@ -31,7 +33,8 @@ export const AlgorithmSelector = ({ processes, setProcesses }) => {
 
     for (let x = 0; x < Math.floor(noProcesses); x++) {
       processList.push({
-        id: "P" + (x + 1),
+        id: "P" + x,
+        arrivalTime: x,
         processTime:
           Math.floor(Math.random() * (maxTime - minTime + 1)) + minTime,
         processLength:
@@ -47,21 +50,6 @@ export const AlgorithmSelector = ({ processes, setProcesses }) => {
 
       await sleep(timeTaken);
       console.log(processes[i]["id"]);
-    }
-
-    //sjf
-    setSJFProcesses([
-      ...processes.sort((a, b) =>
-        a["processTime"] > b["processTime"] ? 1 : -1
-      ),
-    ]);
-
-    console.log(sjfProcesses);
-    for (let i = 0; i < sjfProcesses.length; i++) {
-      let timeTaken = sjfProcesses[i]["processTime"] * 1000;
-
-      await sleep(timeTaken);
-      console.log(sjfProcesses[i]["id"]);
     }
   }
 
@@ -80,7 +68,7 @@ export const AlgorithmSelector = ({ processes, setProcesses }) => {
             }}
           >
             <option value="fcfs">First Come First Serve</option>
-            <option value="sjf">Shortest Job First</option>
+            <option value="spn">Shortest Job First</option>
             <option value="ps">Priority Scheduling</option>
             <option value="rr">Round Robin</option>
           </select>

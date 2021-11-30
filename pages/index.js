@@ -9,6 +9,7 @@ import { Visualizer } from "../views/Visualizer/Visualizer";
 
 export default function Home() {
   const [processes, setProcesses] = useState([]);
+  const [algorithm, setAlgorithm] = useState("fcfs");
 
   return (
     <div>
@@ -26,12 +27,14 @@ export default function Home() {
           <AlgorithmSelector
             processes={processes}
             setProcesses={setProcesses}
+            algorithm={algorithm}
+            setAlgorithm={setAlgorithm}
           />
           <Processes processes={processes} setProcesses={setProcesses} />
         </div>
 
         <div className={styles.rightCon}>
-          <Visualizer processes={processes} setProcesses={setProcesses} />
+          <Visualizer processes={processes} algorithm={algorithm} />
           <Results />
         </div>
       </div>
