@@ -27,7 +27,7 @@ export const Processes = ({ processes, setProcesses }) => {
                   processes.map((process) => {
                     return (
                       <tr key={process.id}>
-                        <td>{process.id}</td>
+                        <td>{process.name}</td>
                         <td>{process.arrivalTime}</td>
                         <td>{process.processTime}</td>
                         <td>{process.priority}</td>

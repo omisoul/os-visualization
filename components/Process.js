@@ -6,7 +6,7 @@ export const Process = ({ process }) => {
   return (
     <div className={styles.processCon}>
       <p>
-        Process ID: <span>{process.id}</span>
+        Process ID: <span>{process.name}</span>
       </p>
       <p>
         Time Taken: <span>{process.processTime}</span>

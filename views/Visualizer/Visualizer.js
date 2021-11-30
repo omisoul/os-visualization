@@ -3,9 +3,10 @@ import { Process } from "../../components/Process";
 
 import styles from "../../styles/Visualizer/Visualizer.module.css";
 
-export const Visualizer = ({ processes, algorithm }) => {
+export const Visualizer = ({ processes, algorithm, quantum }) => {
   const [newList, setNewList] = useState(processes);
   const [testList, setTestList] = useState([]);
+  // const [tProcess, setTProcess] = useState({})
 
   let items = 0;
 
@@ -21,7 +22,6 @@ export const Visualizer = ({ processes, algorithm }) => {
 
   let update = () => {
     let tList = newList.slice(0, items + 1);
-    console.log(tList);
     setTestList([...tList]);
     items += 1;
     if (items < newList.length) {
@@ -52,7 +52,45 @@ export const Visualizer = ({ processes, algorithm }) => {
         ...processes.sort((a, b) => (b["priority"] < a["priority"] ? -1 : 1)),
       ]);
     } else if (algorithm == "rr") {
-      setNewList([...processes]);
+      let times = processes.map((process) => process.processTime);
+      let isAllZero = false;
+      let pList = [];
+      let count = 0;
+      while (!isAllZero) {
+        for (let i = 0; i < times.length; i++) {
+          console.log(count);
+          if (times[i] > quantum) {
+            pList.push({
+              id: count,
+              name: "P" + i,
+              arrivalTime: i,
+              processTime: quantum,
+              processLength: 1,
+              priority: 1,
+            });
+            times[i] = times[i] - quantum;
+            count += 1;
+          } else {
+            pList.push({
+              id: count,
+              name: "P" + i,
+              arrivalTime: i,
+              processTime: times[i],
+              processLength: 1,
+              priority: 1,
+            });
+            times[i] = 0;
+            count += 1;
+          }
+          // count += 1;
+        }
+
+        isAllZero = times.every((el) => el === 0);
+      }
+
+      setNewList([...pList]);
+
+      console.log(pList);
     }
   }
 
